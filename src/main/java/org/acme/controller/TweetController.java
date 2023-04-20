@@ -1,6 +1,7 @@
 package org.acme.controller;
 
 
+import com.google.gson.Gson;
 import org.acme.model.Tweet;
 import org.acme.model.User;
 import org.acme.services.TweetService;
@@ -15,16 +16,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Path("/tweets")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+
+
 public class TweetController {
 
     @Inject
     TweetService tweetService;
 
     @GET
-    public List<Tweet> getAllTweets(){
-        return tweetService.getAllTweets();
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getAllTweets(){
+        List<Tweet> tweets = tweetService.getAllTweets();
+        Gson Json = new Gson();
+        String res = Json.toJson(tweets);
+        return res;
     }
 
     @GET

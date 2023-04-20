@@ -22,7 +22,7 @@ public class TweetServiceImp implements TweetService {
     MongoClient mongoClient;
 
     private MongoCollection getCollection(){
-        return mongoClient.getDatabase("cluster0").getCollection("tweets");
+        return mongoClient.getDatabase("arep-laboratorio").getCollection("tweets");
     }
 
     @Override
@@ -34,14 +34,14 @@ public class TweetServiceImp implements TweetService {
                     Document tweetDocument = cursor.next();
                     Tweet tweet = new Tweet();
                     tweet.setId(String.valueOf(tweetDocument.getObjectId("_id")));
-                    tweet.setText(tweetDocument.getString("texto"));
-                    tweet.setDate(tweetDocument.getDate("date"));
+                    tweet.setText(tweetDocument.getString("text"));
+                    //tweet.setDate(tweetDocument.getDate("date"));
                     User userTweet = new User();
                     Document documentUser = (Document) tweetDocument.get("user");
-                    userTweet.setId(documentUser.getString("_id"));
-                    userTweet.setName(documentUser.getString("name"));
-                    userTweet.setEmail(documentUser.getString("email"));
-                    userTweet.setPassword(documentUser.getString("password"));
+                    //userTweet.setId(documentUser.getString("_id"));
+                    //userTweet.setName(documentUser.getString("name"));
+                    //userTweet.setEmail(documentUser.getString("email"));
+                    //userTweet.setPassword(documentUser.getString("password"));
                     tweet.setUser(userTweet);
                     list.add(tweet);
                 }

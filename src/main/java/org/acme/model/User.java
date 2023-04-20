@@ -1,7 +1,8 @@
 package org.acme.model;
 
+import io.quarkus.mongodb.panache.common.MongoEntity;
 import org.bson.Document;
-
+@MongoEntity(database = "arep-laboratorio", collection = "users")
 public class User {
     private String id;
     private String name;

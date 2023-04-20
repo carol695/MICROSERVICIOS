@@ -22,7 +22,7 @@ public class StreamServiceImp implements StreamService{
     MongoClient mongoClient;
 
     private MongoCollection getCollection(){
-        return mongoClient.getDatabase("cluster0").getCollection("streams");
+        return mongoClient.getDatabase("arep-laboratorio").getCollection("streams");
     }
 
     @Override

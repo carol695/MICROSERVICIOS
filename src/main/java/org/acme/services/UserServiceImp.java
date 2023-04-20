@@ -23,7 +23,7 @@ public class UserServiceImp implements UserService {
     MongoClient mongoClient;
 
     private MongoCollection getCollection(){
-        return mongoClient.getDatabase("cluster0").getCollection("users");
+        return mongoClient.getDatabase("arep-laboratorio").getCollection("users");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class UserServiceImp implements UserService {
                 Document document = cursor.next();
                 User user = new User();
                 user.setId(String.valueOf(document.getObjectId("_id")));
-                user.setName(document.getString("nombre"));
+                user.setName(document.getString("name"));
                 user.setEmail(document.getString("email"));
                 user.setPassword(document.getString("password"));
                 list.add(user);

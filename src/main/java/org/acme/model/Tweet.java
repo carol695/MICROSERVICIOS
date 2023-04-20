@@ -1,6 +1,10 @@
 package org.acme.model;
 
+import io.quarkus.mongodb.panache.common.MongoEntity;
+
 import java.util.Date;
+
+@MongoEntity(database = "arep-laboratorio", collection = "tweets")
 
 public class Tweet {
     private String id;
@@ -11,11 +15,11 @@ public class Tweet {
 
     private Date date;
 
-    public Tweet(String id, String text, User user,  Date date){
+    public Tweet(String id, String text, User user){
         this.id = id;
         this.text = text;
         this.user = user;
-        this.date = date;
+        this.date = new Date();
     }
 
     public Tweet() {

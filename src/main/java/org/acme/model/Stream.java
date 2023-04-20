@@ -1,6 +1,10 @@
 package org.acme.model;
 
+import io.quarkus.mongodb.panache.common.MongoEntity;
+
 import java.util.List;
+
+@MongoEntity(database = "arep-laboratorio", collection = "streams")
 
 public class Stream {
         private String id;
