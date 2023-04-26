@@ -17,7 +17,6 @@ import java.util.List;
 
 public class UserController {
 
-
     @Inject
     UserService userService;
 
@@ -36,6 +35,17 @@ public class UserController {
         }
         return usuario;
     }
+
+    @GET
+    @Path("/email/{email}")
+    public User getUserByEmail(String email){
+        User usuario = userService.getUserByEmail(email);
+        if (usuario == null) {
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
+        }
+        return usuario;
+    }
+
 
 
     @POST

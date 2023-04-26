@@ -16,20 +16,16 @@ import java.util.List;
 import java.util.Optional;
 
 @Path("/tweets")
-
-
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class TweetController {
 
     @Inject
     TweetService tweetService;
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getAllTweets(){
-        List<Tweet> tweets = tweetService.getAllTweets();
-        Gson Json = new Gson();
-        String res = Json.toJson(tweets);
-        return res;
+    public List<Tweet> getAllTweets(){
+        return tweetService.getAllTweets();
     }
 
     @GET
@@ -44,9 +40,10 @@ public class TweetController {
 
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response createTweet(Tweet tweet) {
         tweetService.createTweet(tweet);
-        return Response.status(Response.Status.CREATED).entity(tweet).build();
+        return Response.status(Response.Status.CREATED).build();
     }
 
 
@@ -60,6 +57,7 @@ public class TweetController {
 
     @DELETE
     @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
     public Response RemoveUser(String id) {
         tweetService.deleteTweet(id);
         return Response.status(Response.Status.NO_CONTENT.ordinal()).build();

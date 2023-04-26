@@ -17,4 +17,6 @@ public interface UserService {
     Stream updateUser(String id, User user);
 
     void deleteUser(String id);
+
+    User getUserByEmail(String email);
 }

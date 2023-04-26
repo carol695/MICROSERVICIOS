@@ -1,0 +1,96 @@
+body {
+	background-color: #eee;
+	font-family: Arial, sans-serif;
+}
+
+.tweets {
+	background-color: #fff;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+	margin: 100px auto;
+	padding: 20px;
+	max-width: 800px;
+	text-align: center;
+}
+
+.tweet {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.profile-img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-right: 16px;
+}
+
+.tweet-content {
+  flex: 1;
+}
+
+.tweet-author {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.tweet-date {
+  font-size: 12px;
+  color: #777;
+}
+
+.tweet-text {
+  margin-top: 4px;
+}
+
+
+h1 {
+	font-size: 24px;
+	margin-bottom: 20px;
+}
+
+#tweet-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.tweet {
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 10px;
+}
+
+.tweet p {
+	margin: 0;
+	padding: 0;
+}
+
+.tweet .date {
+	color: #999;
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.green-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: green;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.green-btn:hover {
+  background-color: darkgreen;
+}

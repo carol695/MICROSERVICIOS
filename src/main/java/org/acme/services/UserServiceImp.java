@@ -82,5 +82,17 @@ public class UserServiceImp implements UserService {
     }
 
 
+    @Override
+    public User getUserByEmail(String email) {
+        Document userDocument = (Document) getCollection().find(new Document("email", email)).first();
+        User user = new User();
+        //user.setId(String.valueOf(userDocument.getObjectId("_id")));
+        user.setName(userDocument.getString("nombre"));
+        user.setEmail(userDocument.getString("email"));
+        user.setPassword(userDocument.getString("password"));
+        return user;
+    }
+
+
 }
 

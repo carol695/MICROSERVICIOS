@@ -35,13 +35,13 @@ public class TweetServiceImp implements TweetService {
                     Tweet tweet = new Tweet();
                     tweet.setId(String.valueOf(tweetDocument.getObjectId("_id")));
                     tweet.setText(tweetDocument.getString("text"));
-                    //tweet.setDate(tweetDocument.getDate("date"));
+                    tweet.setDate(tweetDocument.getDate("date"));
                     User userTweet = new User();
                     Document documentUser = (Document) tweetDocument.get("user");
-                    //userTweet.setId(documentUser.getString("_id"));
-                    //userTweet.setName(documentUser.getString("name"));
-                    //userTweet.setEmail(documentUser.getString("email"));
-                    //userTweet.setPassword(documentUser.getString("password"));
+                    userTweet.setId(documentUser.getString("_id"));
+                    userTweet.setName(documentUser.getString("name"));
+                    userTweet.setEmail(documentUser.getString("email"));
+                    userTweet.setPassword(documentUser.getString("password"));
                     tweet.setUser(userTweet);
                     list.add(tweet);
                 }
@@ -53,10 +53,11 @@ public class TweetServiceImp implements TweetService {
 
     @Override
     public void createTweet(Tweet tweet) {
+        Tweet newTweet = new Tweet(tweet.getText(), tweet.getUser());
         Document document = new Document()
-                .append("user", tweet.getUser())
-                .append("texto", tweet.getText())
-                .append("date", tweet.getDate());
+                .append("user", newTweet.getUser())
+                .append("text", newTweet.getText())
+                .append("date", newTweet.getDate());
         getCollection().insertOne(document);
 
     }
@@ -89,6 +90,7 @@ public class TweetServiceImp implements TweetService {
     @Override
     public void deleteTweet(String id) {
         ObjectId objectId = new ObjectId(id);
+        System.out.println("holaaaaaaa"  + id);
         getCollection().deleteOne(Filters.eq("_id", objectId));
 
     }

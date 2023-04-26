@@ -15,8 +15,7 @@ public class Tweet {
 
     private Date date;
 
-    public Tweet(String id, String text, User user){
-        this.id = id;
+    public Tweet(String text, User user){
         this.text = text;
         this.user = user;
         this.date = new Date();
